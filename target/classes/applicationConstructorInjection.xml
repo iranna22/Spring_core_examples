@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- Define the List of hobbies -->
+    <!-- <bean id="hobbies" class="java.util.ArrayList">
+        <constructor-arg>
+            <list>
+                <value>Reading</value>
+                <value>Coding</value>
+                <value>Travelling</value>
+            </list>
+        </constructor-arg>
+    </bean> -->
+
+    <!-- Define the Person bean with constructor injection -->
+    <bean id="person" class="com.iranna.constructorInjection.Person">
+        <constructor-arg value="30"/> <!-- Injecting primitive int -->
+        <constructor-arg value="John Doe"/> <!-- Injecting String -->
+       <!--  <constructor-arg ref="hobbies"/> Injecting List (Collection) -->
+         <constructor-arg>
+            <list>
+                <value>Reading</value>
+                <value>Coding</value>
+                <value>Travelling</value>
+            </list>
+        </constructor-arg>
+    </bean>
+    
+    <!-- Bean for Engine -->
+    <bean id="engine" class="com.iranna.constructorInjection.Engine">
+        <constructor-arg value="V8 Engine"/> <!-- Injecting String into Engine -->
+    </bean>
+
+    <!-- Bean for Car -->
+    <bean id="car" class="com.iranna.constructorInjection.Car">
+        <constructor-arg value="Ford Mustang"/> <!-- Injecting brand (String) -->
+        <constructor-arg ref="engine"/> <!-- Injecting Engine object -->
+    </bean>
+    
+    <!--  ================================== -->
+    <!-- Bean definitions for Students -->
+    <bean id="student1" class="com.iranna.constructorInjection.Student">
+        <constructor-arg value="1"/> <!-- ID -->
+        <constructor-arg value="Alice"/> <!-- Name -->
+    </bean>
+
+    <bean id="student2" class="com.iranna.constructorInjection.Student">
+        <constructor-arg value="2"/> <!-- ID -->
+        <constructor-arg value="Bob"/> <!-- Name -->
+    </bean>
+
+    <bean id="student3" class="com.iranna.constructorInjection.Student">
+        <constructor-arg value="3"/> <!-- ID -->
+        <constructor-arg value="Charlie"/> <!-- Name -->
+    </bean>
+
+    <!-- Bean definition for School -->
+    <bean id="school" class="com.iranna.constructorInjection.School">
+        <constructor-arg value="Greenwood High"/> <!-- School name -->
+        <constructor-arg>
+            <list>
+                <ref bean="student1"/>
+                <ref bean="student2"/>
+                <ref bean="student3"/>
+            </list>
+        </constructor-arg>
+    </bean>
+    
+    <!--  ================================== -->
+     <!-- Bean definitions for Students -->
+    <bean id="student4" class="com.iranna.constructorInjection.Student1">
+        <constructor-arg value="1"/> <!-- ID -->
+        <constructor-arg value="Alice"/> <!-- Name -->
+    </bean>
+
+    <bean id="student5" class="com.iranna.constructorInjection.Student1">
+        <constructor-arg value="2"/> <!-- ID -->
+        <constructor-arg value="Bob"/> <!-- Name -->
+    </bean>
+
+    <bean id="student6" class="com.iranna.constructorInjection.Student1">
+        <constructor-arg value="3"/> <!-- ID -->
+        <constructor-arg value="Charlie"/> <!-- Name -->
+    </bean>
+
+    <!-- Bean definition for School -->
+    <bean id="school1" class="com.iranna.constructorInjection.School1">
+        <!-- School name -->
+        <constructor-arg value="Greenwood High"/>
+
+        <!-- Map of String values -->
+        <constructor-arg>
+            <map>
+                <entry key="address" value="123 Main St"/>
+                <entry key="city" value="Springfield"/>
+                <entry key="state" value="IL"/>
+            </map>
+        </constructor-arg>
+
+        <!-- Map of dependent Student objects -->
+        <constructor-arg>
+            <map>
+                <entry key="1" value-ref="student4"/>
+                <entry key="2" value-ref="student5"/>
+                <entry key="3" value-ref="student6"/>
+            </map>
+        </constructor-arg>
+    </bean>
+</beans>

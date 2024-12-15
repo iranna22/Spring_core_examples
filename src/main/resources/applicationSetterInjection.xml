@@ -1,0 +1,64 @@
+<beans xmlns="http://www.springframework.org/schema/beans" 
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- Define the Person bean -->
+    <bean id="person" class="com.iranna.setterInjection.Person">
+        <!-- Inject primitive value -->
+        <property name="id" value="101" />
+        
+        <!-- Inject String value -->
+        <property name="name" value="John Doe" />
+        
+        <!-- Inject String value -->
+        <property name="address" value="123 Spring Street" />
+        
+        <!-- Inject collection (List) -->
+        <property name="hobbies">
+            <list>
+                <value>Reading</value>
+                <value>Traveling</value>
+                <value>Cooking</value>
+            </list>
+        </property>
+    </bean>
+
+<!-- ================================== -->
+
+<!-- Bean for Address -->
+    <bean id="currentAddress" class="com.iranna.setterInjection.Address">
+        <property name="city" value="New York" />
+        <property name="state" value="NY" />
+    </bean>
+
+    <!-- Bean for Previous Address 1 -->
+    <bean id="previousAddress1" class="com.iranna.setterInjection.Address">
+        <property name="city" value="Los Angeles" />
+        <property name="state" value="CA" />
+    </bean>
+
+    <!-- Bean for Previous Address 2 -->
+    <bean id="previousAddress2" class="com.iranna.setterInjection.Address">
+        <property name="city" value="Chicago" />
+        <property name="state" value="IL" />
+    </bean>
+
+    <!-- Define the Person bean -->
+    <bean id="person1" class="com.iranna.setterInjection.Person1">
+        <!-- Inject primitive values -->
+        <property name="id" value="101" />
+        <property name="name" value="John Doe" />
+
+        <!-- Inject Address object -->
+        <property name="address" ref="currentAddress" />
+
+        <!-- Inject Collection of Address objects -->
+        <property name="previousAddresses">
+            <list>
+                <ref bean="previousAddress1" />
+                <ref bean="previousAddress2" />
+            </list>
+        </property>
+    </bean>
+</beans>

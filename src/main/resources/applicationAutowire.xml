@@ -1,0 +1,25 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- Define Engine Bean -->
+   <!--  <bean id="engine1" class="com.iranna.autowiring.Engine">
+        <property name="type" value="V8"/>
+    </bean> -->
+
+    <!-- Autowire by Name -->
+    <bean id="engine2" class="com.iranna.autowiring.Engine">
+        <property name="type" value="Inline-4"/>
+    </bean>
+
+    <!-- <bean id="carByName" class="com.iranna.autowiring.Car" autowire="byName"/> -->
+
+    <!-- Autowire by Type -->
+    <bean id="carByType" class="com.iranna.autowiring.Car" autowire="byType"/>
+
+    <!-- Autowire by Constructor -->
+    <bean id="carByConstructor" class="com.iranna.autowiring.Car">
+        <constructor-arg ref="engine2"/>
+    </bean>
+</beans>
